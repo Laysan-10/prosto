@@ -1,76 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using System.Globalization;
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 public class can_move : MonoBehaviour
 {
+	bool drag = true;
+	Vector3 originalPosition;
+	Vector3 pointScreen;
+	Vector3 offset;
+	public bool areaReached = false;
+	bool take_meal = false;
+	public varka varka;
 	
-	public Rigidbody _selectedObject;
-	Vector3 _mousePosition;
-	Vector3 _offset;
-	public float _maxSpeed=10;
-	Vector2 _mouseForce;
-	Vector3 _lastPosition;
 	Camera _camera;
+	public GameObject cub;
 	void Start()
 	{
 		_camera = FindObjectOfType<Camera>();
+		varka = FindObjectOfType<varka>();
 	}
-	void Update()
+	public  void OnMouseDown()
 	{
-		_mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-		
-		if(_selectedObject)
+		pointScreen = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+		//смещение объекта относительно мыши
+		offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, pointScreen.z));
+		drag = true;
+	}
+	public void OnMouseDrag()
+	{
+		if (drag)
 		{
-			Debug.Log("Update_1");
-			_mouseForce = (_mousePosition - _lastPosition) / Time.deltaTime;
-				_mouseForce = Vector2.ClampMagnitude(_mouseForce, _maxSpeed);
-				_lastPosition = _mousePosition;
+				Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, pointScreen.z);
+				Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);
+				transform.position = curPosition;
 		}
-		if(Input.GetMouseButtonDown(0))
+	}
+	void OnMouseUp()
+	{
+	   
+		if (drag && varka!=null )
 		{
-			Ray _ray = _camera.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-			if (Physics.Raycast(_ray, out hit))
-			{
-				// _mouseForce = (_mousePosition - _lastPosition) / Time.deltaTime;
-				// _mouseForce = Vector2.ClampMagnitude(_mouseForce, _maxSpeed);
-				// _lastPosition = _mousePosition;
-				_selectedObject = hit.transform.gameObject.GetComponent<Rigidbody>();
-				_offset = _selectedObject.transform.position - _mousePosition;
-				Debug.Log(hit.transform.gameObject.name);
-				// hit.transform.position = _mousePosition;
-				// hit.transform.GetComponent<Rigidbody>().MovePosition(_mousePosition);
-
-			{
-		}
-			Debug.Log(Input.GetMouseButtonUp(1));
-			Debug.Log( _selectedObject);
+			varka.CheckTriggerStay();
 			
-		
-		if(Input.GetMouseButtonUp(0) && _selectedObject)
-		{
-			// Debug.Log(Input.GetMouseButtonUp(0) && _selectedObject);
-			 _selectedObject = null;
+			// if (!areaReached) {  gameObject.transform.position = originalPosition;}//����������� �� ��������� ������� ���� �� � ����������.
+			// else if(areaReached && take_meal) //���� � ���������� � ����� �������� ����.
+			// {
+			// 	// TeleportMeal(_place);
+			// }
+			// else if(!take_meal)
+			// {
+			// 	gameObject.transform.position = originalPosition;
+			// }
+			// 	drag = false;
 		}
-		if(_selectedObject)
-		{
-			Debug.Log("Fixed_Update");
-			// _selectedObject.MovePosition(_mousePosition + _offset);
-			_selectedObject.transform.position = _mousePosition + _offset;
-		}
-		
 	}
-	void FixedUpdate()
+	void  Update()
 	{
-		// if(_selectedObject)
-		// {
-		// 	Debug.Log("Fixed_Update");
-		// 	_selectedObject.MovePosition(_mousePosition + _offset);
-		// }
+		// varka.CheckTriggerStay();
 	}
-		
-}
-	}
+	
+	
 }
