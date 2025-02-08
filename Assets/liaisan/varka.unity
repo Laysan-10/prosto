@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 598618037}
   - component: {fileID: 598618040}
   - component: {fileID: 598618036}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: varka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 645533107}
   - component: {fileID: 645533106}
   - component: {fileID: 645533105}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: varka (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 824340270}
   - component: {fileID: 824340269}
   - component: {fileID: 824340268}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: varka (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 1416886621}
   - component: {fileID: 1416886620}
   - component: {fileID: 1416886619}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: varka (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1088,7 +1088,6 @@ GameObject:
   - component: {fileID: 1912219339}
   - component: {fileID: 1912219338}
   - component: {fileID: 1912219343}
-  - component: {fileID: 1912219342}
   m_Layer: 0
   m_Name: create_noodle
   m_TagString: Untagged
@@ -1113,7 +1112,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1176,39 +1175,12 @@ Transform:
   m_GameObject: {fileID: 1912219337}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.288, y: 0.942, z: 0.156}
+  m_LocalPosition: {x: 2.288, y: 0.947, z: 0.156}
   m_LocalScale: {x: 0.3285695, y: -0.01527672, z: 0.3285695}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1912219342
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912219337}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1912219343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1238,7 +1210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2128459695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1251,9 +1223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66634f3fa8a7c614892304850e6aae71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalPosition: {x: 0, y: 0, z: 0}
   areaReached: 0
-  varka: {fileID: 0}
-  cub: {fileID: 0}
+  varka: []
 --- !u!4 &2128459696
 Transform:
   m_ObjectHideFlags: 0
@@ -1282,18 +1254,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere
       objectReference: {fileID: 0}
-    - target: {fileID: 4121704210278336439, guid: c6118c4c6ce969445b7ddd15124e4e4d,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -7196802604745430461, guid: 66824dc3bb7cd9142a787540c023c6a8,
-        type: 3}
-    - target: {fileID: 4230452866112914934, guid: c6118c4c6ce969445b7ddd15124e4e4d,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 4598204077276939418, guid: 66824dc3bb7cd9142a787540c023c6a8,
-        type: 3}
     - target: {fileID: 7188681482701980296, guid: c6118c4c6ce969445b7ddd15124e4e4d,
         type: 3}
       propertyPath: cub
@@ -1304,6 +1264,11 @@ PrefabInstance:
       propertyPath: varka
       value: 
       objectReference: {fileID: 598618040}
+    - target: {fileID: 7188681482701980296, guid: c6118c4c6ce969445b7ddd15124e4e4d,
+        type: 3}
+      propertyPath: targetlayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8705181724217182638, guid: c6118c4c6ce969445b7ddd15124e4e4d,
         type: 3}
       propertyPath: m_LocalPosition.x
