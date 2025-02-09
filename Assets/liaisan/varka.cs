@@ -7,13 +7,19 @@ public class varka : MonoBehaviour
 	[SerializeField] LayerMask targetlayer;
 	[SerializeField] create_meal create_Meal;
 	MeshRenderer _water;
+	Clock _clock;
 	bool _is_use = false;
 	void Awake()
 	{
-		var mesh = gameObject.GetComponentsInChildren<MeshRenderer>();
-		_water = mesh[1];
+		var child_1_in_pan = gameObject.GetComponentsInChildren<Transform>();
+		_water = child_1_in_pan[1].gameObject.GetComponent<MeshRenderer>();
+		child_1_in_pan[1].gameObject.GetComponent<Collider>().enabled = false;
 		_water.enabled = false;
+		_clock = gameObject.GetComponentInChildren<Clock>();
+		
 	}
+	
+	
    public bool CheckTriggerStay()
 	{
 			Debug.Log("Start"+_is_use);
@@ -39,6 +45,7 @@ public class varka : MonoBehaviour
 				// 	child.GetComponent<MeshRenderer>().enabled = true;
 				// 	Debug.Log(child.name);
 				// }	
+				_clock.enabled = true;
 				return true;
 		}
 		

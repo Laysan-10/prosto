@@ -18,8 +18,9 @@ public class Clock : MonoBehaviour {
 	//-- internal vars
 	float msecs=0;
 
-void Start() 
+void Awake() 
 {
+	gameObject.GetComponent<Clock>().enabled = false;
 	//-- set real time
 	// if (realTime)
 	// {
