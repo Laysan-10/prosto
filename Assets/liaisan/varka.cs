@@ -8,15 +8,20 @@ public class varka : MonoBehaviour
 	[SerializeField] create_meal create_Meal;
 	MeshRenderer _water;
 	Clock _clock;
+	pan_move _pan;
 	bool _is_use = false;
+	Transform[] child_1_in_pan;
 	void Awake()
 	{
-		var child_1_in_pan = gameObject.GetComponentsInChildren<Transform>();
+		child_1_in_pan = gameObject.GetComponentsInChildren<Transform>();
 		_water = child_1_in_pan[1].gameObject.GetComponent<MeshRenderer>();
-		child_1_in_pan[1].gameObject.GetComponent<Collider>().enabled = false;
+		child_1_in_pan[1].gameObject.GetComponent<Collider>().enabled = false;	
 		_water.enabled = false;
 		_clock = gameObject.GetComponentInChildren<Clock>();
-		
+		 _pan = gameObject.GetComponentInChildren<pan_move>();
+		Debug.Log("1"+_pan);
+		// Debug.Log("2"+_clock);
+		// Debug.Log("3"+child_1_in_pan[3]);
 	}
 	
 	
@@ -26,7 +31,7 @@ public class varka : MonoBehaviour
 		
 		if(_is_use == false)
 		{
-			Collider[] colliders = Physics.OverlapSphere(transform.position,transform.localScale.x, targetlayer); // Определяем коллайдеры в радиусе 0.5
+			Collider[] colliders = Physics.OverlapSphere(_pan.gameObject.transform.position,_pan.gameObject.transform.localScale.x, targetlayer); // Определяем коллайдеры в радиусе 0.5
 		// Debug.Log("About Collider" + (colliders == null));
 			
 		foreach (Collider col in colliders)
@@ -40,6 +45,7 @@ public class varka : MonoBehaviour
 				create_Meal.Spawn();
 				_is_use = true;
 				_water.enabled = true;
+				col.transform.SetParent(gameObject.transform);
 				// foreach(var child in mesh)
 				// {
 				// 	child.GetComponent<MeshRenderer>().enabled = true;
