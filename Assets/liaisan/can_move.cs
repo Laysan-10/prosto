@@ -38,7 +38,7 @@ public class can_move : MonoBehaviour
 		{
 				Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, pointScreen.z);
 				Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);
-				transform.position = curPosition;
+				transform.position = Vector3.Lerp(transform.position, curPosition, 0.1f);
 		}
 	}
 	void OnMouseUp()
