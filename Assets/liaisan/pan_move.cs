@@ -10,11 +10,14 @@ public class pan_move : MonoBehaviour
 	 Vector3 pointScreen;
 	Vector3 offset;
 	 private float zCoordinate;
+	 meal_done meal_done;
 	 
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
 	{
 		originalPosition = gameObject.transform.position;
+		meal_done = FindFirstObjectByType<meal_done>();
+		
 	}
 
 	// Update is called once per frame
@@ -56,6 +59,10 @@ public class pan_move : MonoBehaviour
 	}
  void OnMouseUp()
  {
-	gameObject.transform.parent.transform.position = originalPosition;
+	if(meal_done.Pan_meal_done() == false)
+	{
+		gameObject.transform.parent.transform.position = originalPosition;
+	}
+	
  }
 }

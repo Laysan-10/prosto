@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 549108574}
   - component: {fileID: 549108573}
   - component: {fileID: 549108572}
+  - component: {fileID: 549108575}
   - component: {fileID: 549108571}
   m_Layer: 0
   m_Name: next_step
@@ -671,12 +672,27 @@ Transform:
   m_GameObject: {fileID: 549108570}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.163, y: 0.918, z: 1.569}
+  m_LocalPosition: {x: 2.163, y: 0.918, z: 1.904}
   m_LocalScale: {x: 0.3796522, y: 0.08552109, z: 0.20804}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &549108575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549108570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fec45271f135349bda4fe3872ade51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetlayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!4 &549250009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 456804, guid: 4073f41b7d930f94d9470df64ec12b53,
@@ -698,7 +714,7 @@ GameObject:
   - component: {fileID: 598618036}
   m_Layer: 3
   m_Name: varka
-  m_TagString: Untagged
+  m_TagString: pan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
